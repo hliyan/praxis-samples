@@ -1,4 +1,17 @@
-import  { React }  from 'praxis';
-import Routes from './Routes';
+import  { React, Router }  from 'praxis';
 
-React.render(Routes, document.getElementById('app'));
+import Dashboard from './dashboard/Dashboard';
+import Users from './users/Users';
+import App from './app/App';
+
+let routes = [{ 
+    path: '/',
+    component: App,
+    indexRoute: { component: Dashboard },
+    childRoutes: [{
+        path: 'users',
+        component: Users
+    }]
+}];
+
+React.render(<Router routes={routes} />, document.getElementById('app'));
